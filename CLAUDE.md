@@ -32,10 +32,20 @@ Python, LLM API for judging, a small hand-labeled calibration set checked into t
   disagreed with you and why (this is more credible than claiming perfect agreement).
 - Scorer output includes reasoning per dimension, not just numbers — usable for debugging.
 
+## Tradeoffs (required — do not skip)
+Change at least one of these from whatever an AI would default to, and document why in a
+`## Tradeoffs` section in the README:
+- Whether dimensions are weighted equally or not in any composite score, and why.
+- A specific rubric anchor you rewrote after seeing it produce a wrong verdict, and what you
+  changed.
+- What you did when the scorer disagreed with your human label — did you fix the rubric, the
+  prompt, or accept the disagreement, and why.
+
 ## Definition of done
 - [ ] Rubric file + scorer run end-to-end on real LLM outputs
 - [ ] README reports calibration results against your hand-labeled set, including disagreements
 - [ ] Documents how the rubric would change for a different task/domain
+- [ ] README has a `## Tradeoffs` section documenting a real decision you changed and why
 - [ ] `.env.example`; no secrets committed
 
 ## Portfolio pitch
