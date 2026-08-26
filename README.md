@@ -1,5 +1,33 @@
 # LLM Output Quality Scorer
 
+## For recruiters / hiring managers
+
+**The problem:** every team shipping an AI feature eventually has to answer "is this output
+actually good enough to ship?" Most teams answer that by eyeballing a handful of examples, which
+doesn't scale and isn't consistent from person to person. This project is a working tool that
+turns that judgment call into a measurable, repeatable score.
+
+**What I built:** an AI "judge" that scores draft customer-support replies against a rubric I
+wrote myself — four specific dimensions (does it answer the right question, is it factually
+accurate, does it cover everything the customer asked, is the tone right), each with a written
+description of what a weak answer looks like versus a strong one. I ran it against 16 realistic
+support tickets I wrote to cover a real range of difficulty, then checked the judge's scores
+against independent judgment to find out where it could be trusted and where it couldn't.
+
+**Why this is a PM signal, not just an engineering exercise:** the easy version of this project
+is to call an API, get some scores back, and call it done. I didn't stop there — I found a real
+blind spot in my own tool (it was too generous on two of the four dimensions, confirmed by
+testing, not assumed) and wrote that up instead of hiding it. I also drew a hard line between a
+quick self-check I ran myself and genuine human calibration, which the project is explicit about
+still needing rather than quietly pretending to have. That distinction — knowing when a result
+is trustworthy versus when it just looks trustworthy — is the actual skill this project is meant
+to demonstrate.
+
+**Try it in under 5 minutes:** see [Setup](#setup) below — it runs entirely on a free local
+model, no API key or billing required.
+
+---
+
 A rubric-based LLM-as-judge scorer for AI-drafted customer support replies. Takes a customer
 message + account/policy context + an AI-drafted reply, and scores the reply 1-5 on four
 anchored dimensions (relevance, correctness, completeness, tone), with reasoning per dimension.
