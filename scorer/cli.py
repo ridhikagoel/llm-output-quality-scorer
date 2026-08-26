@@ -1,7 +1,7 @@
 import argparse
 
 from scorer import generate_replies, run_score
-from scorer.calibrate import calibrate
+from scorer.calibrate import calibrate, write_report
 from scorer.rubric import load_rubric
 
 
@@ -33,7 +33,7 @@ def main():
     elif args.command == "calibrate":
         rubric = load_rubric(args.rubric)
         result = calibrate(args.report, args.human_labels, rubric.dimension_names())
-        print(result)
+        write_report(result, args.output)
 
 
 if __name__ == "__main__":

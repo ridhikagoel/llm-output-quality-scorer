@@ -80,7 +80,33 @@ whatever the first generation produced:
 
 ## Calibration
 
-Not yet run — `calibration_report.md` requires real human labels in `data/human_labels.jsonl`,
-which is intentionally a manual step (see `labeling_worksheet.md`, generated from the same 16
-examples). The whole point of calibration is checking the judge against a real person's
-judgment, not another model's, so this step isn't something to fill in synthetically.
+**Real human calibration is not done yet.** `data/human_labels.jsonl` (the file the CLAUDE.md
+definition-of-done actually asks for) is still empty — see `labeling_worksheet.md` to fill it in.
+The point of calibration is checking the judge against a real person's judgment, not another
+model's, so this step can't be satisfied synthetically, and the corresponding checkbox in
+[CLAUDE.md](./CLAUDE.md) stays unchecked until it's done.
+
+**What *is* in this repo (`claude_self_check_report.md`, `data/claude_labels.jsonl`) is a
+different, weaker thing: Claude independently re-read all 16 (ticket, context, draft reply)
+triples — without looking at the judge's scores first — and produced its own scores. That's an
+LLM-vs-LLM consistency check, not calibration against human judgment, and it's kept in
+separately-named files specifically so it never gets mistaken for the real thing.**
+
+Results of that self-check:
+
+| dimension | exact match | within ±1 | MAE | Pearson r |
+|---|---|---|---|---|
+| relevance | 0.31 | 1.00 | 0.69 | 0.23 |
+| correctness | 0.50 | 0.94 | 0.56 | 0.62 |
+| completeness | 0.38 | 1.00 | 0.62 | 0.18 |
+| tone | 0.31 | 0.94 | 0.75 | 0.29 |
+
+Every score was within 1 point on relevance and completeness (weak correlation, but no wild
+misses), while correctness had the strongest correlation (r=0.62) — consistent with correctness
+being the most fact-checkable dimension against the provided context. The one real disagreement
+(2+ points) was **`t15`**, a reply juggling three complaints at once: Claude's independent read
+caught that the reply hedges on the billing question ("we cannot confirm whether the charge is
+indeed a duplicate") when the context already **confirms no duplicate was found** — the judge
+scored that reply correctness=5 and missed the hedge; Claude scored it 3. That's exactly the
+kind of miss real human calibration exists to catch, and it's a plausible preview of what a real
+human labeler might also flag — but it isn't a substitute for one.

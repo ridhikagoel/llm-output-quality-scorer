@@ -69,6 +69,33 @@ def calibrate(report_path: str, human_labels_path: str, dim_names: list[str]) ->
     return {"n_examples": len(common_ids), "per_dimension": per_dim, "disagreements": disagreements}
 
 
+def write_report(result: dict, output_path: str, title: str = "Calibration Report"):
+    lines = [f"# {title}\n", f"Compared against {result['n_examples']} labeled examples.\n"]
+    lines.append("| dimension | n | exact match | within ±1 | MAE | Pearson r |")
+    lines.append("|---|---|---|---|---|---|")
+    for dim, stats in result["per_dimension"].items():
+        r_str = f"{stats['pearson_r']}" if stats["pearson_r"] is not None else "n/a (no variance)"
+        lines.append(
+            f"| {dim} | {stats['n']} | {stats['exact_match_rate']} | {stats['within_1_rate']} | {stats['mae']} | {r_str} |"
+        )
+
+    lines.append("\n## Disagreements of 2+ points (model vs. label)\n")
+    if result["disagreements"]:
+        for d in result["disagreements"]:
+            lines.append(
+                f"- **{d['id']} / {d['dimension']}**: model={d['model_score']}, label={d['human_score']}\n"
+                f"  - model reasoning: {d['model_reasoning']}"
+            )
+    else:
+        lines.append("None — largest disagreement was within 1 point on every scored dimension.")
+
+    with open(output_path, "w") as f:
+        f.write("\n".join(lines))
+
+    print(f"Wrote report to {output_path}")
+    print(json.dumps(result["per_dimension"], indent=2))
+
+
 def main():
     parser = argparse.ArgumentParser(description="Calibrate scorer output against human labels")
     parser.add_argument("--report", default="report.json")
@@ -81,31 +108,7 @@ def main():
 
     rubric = load_rubric(args.rubric)
     result = calibrate(args.report, args.human_labels, rubric.dimension_names())
-
-    lines = [f"# Calibration Report\n", f"Compared against {result['n_examples']} human-labeled examples.\n"]
-    lines.append("| dimension | n | exact match | within ±1 | MAE | Pearson r |")
-    lines.append("|---|---|---|---|---|---|")
-    for dim, stats in result["per_dimension"].items():
-        r_str = f"{stats['pearson_r']}" if stats["pearson_r"] is not None else "n/a (no variance)"
-        lines.append(
-            f"| {dim} | {stats['n']} | {stats['exact_match_rate']} | {stats['within_1_rate']} | {stats['mae']} | {r_str} |"
-        )
-
-    lines.append("\n## Disagreements of 2+ points (model vs. human)\n")
-    if result["disagreements"]:
-        for d in result["disagreements"]:
-            lines.append(
-                f"- **{d['id']} / {d['dimension']}**: model={d['model_score']}, human={d['human_score']}\n"
-                f"  - model reasoning: {d['model_reasoning']}"
-            )
-    else:
-        lines.append("None — largest disagreement was within 1 point on every scored dimension.")
-
-    with open(args.output, "w") as f:
-        f.write("\n".join(lines))
-
-    print(f"Wrote calibration report to {args.output}")
-    print(json.dumps(result["per_dimension"], indent=2))
+    write_report(result, args.output)
 
 
 if __name__ == "__main__":
