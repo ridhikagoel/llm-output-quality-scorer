@@ -10,6 +10,12 @@ Human-calibration step is set up but not yet completed — see "Calibration" bel
 See [CLAUDE.md](./CLAUDE.md) for full scope and requirements. Part of a broader portfolio
 initiative — see the parent [CLAUDE.md](../CLAUDE.md).
 
+**What this demonstrates:** the rubric is written and anchored *before* any scoring happens; the
+judge's output was checked critically rather than trusted on the first run, which surfaced a
+real weakness (see Tradeoffs below); and the calibration step is honest about its own limits —
+a self-check against a second model is clearly labeled as *not* a substitute for real human
+calibration, rather than being dressed up as one.
+
 ## Setup
 
 Runs entirely against a local [Ollama](https://ollama.com) model — no API key, no billing, no
@@ -28,6 +34,48 @@ python3 -m scorer.cli score                # judge-score the drafts -> report.js
 python3 -m scorer.make_worksheet           # build labeling_worksheet.md for human calibration
 python3 -m scorer.cli calibrate            # compare report.json to data/human_labels.jsonl -> calibration_report.md
 ```
+
+## Test data
+
+16 hand-written support tickets in [data/tickets.jsonl](data/tickets.jsonl), each with a
+customer message and the account/policy context a real agent would have — chosen to span a
+real difficulty range, not just easy cases: straightforward requests (refunds, policy
+questions), an angry multi-email escalation, a deliberately vague message with no diagnosable
+issue, a customer stacking three complaints in one message, and cases with a subtle trap in the
+context (e.g. a promo code that looks expired but was actually shown as valid due to a confirmed
+bug, which the reply is supposed to catch).
+
+Four examples, with the real draft reply generated for each and how the judge scored it:
+
+**`t01`** — *"Hi, I was charged $49.99 twice this month for my Pro plan. Can you refund the
+duplicate charge?"* (context: confirmed billing-retry bug, policy = auto-refund in 5-7 days)
+→ scores: relevance=4, correctness=5, completeness=4, **tone=3** — judge noted the reply "reads
+as templated/impersonal" and never acknowledges the customer's frustration, even though nothing
+it says is wrong.
+
+**`t07`** — *"This is the third email I've sent about my billing issue and NO ONE has responded.
+I'm about to cancel..."* (context: a confirmed $75 pricing error, 2 prior unanswered emails)
+→ scores: relevance=5, correctness=4, **completeness=5**, tone=4 — the highest-completeness
+score in the set; judge credited the reply for addressing both the refund and the customer's
+stated intent to cancel "with roughly proportionate attention."
+
+**`t10`** — *"hey so i think i need help with something but not sure who to ask, my account is
+kind of messed up"* (context: nothing wrong on the account — no diagnosable issue at all)
+→ scores: relevance=4, correctness=5, completeness=4, tone=5 — the "right" response here is to
+ask for more detail rather than guess, which the draft did; included specifically to test
+whether the judge would penalize a reply for *not* inventing an answer to an unanswerable ticket
+(it didn't).
+
+**`t15`** — *"I was double billed AND my export feature is broken AND nobody has responded to my
+last email in 4 days."* (context: billing charge was NOT actually duplicated, export outage is a
+known incident, the 4-day-old email is real) → scores: relevance=4, correctness=**5**,
+completeness=4, tone=5 — this is the example flagged in Calibration below: the judge gave this a
+perfect correctness score despite the reply hedging on a fact ("we cannot confirm whether the
+charge is indeed a duplicate") that the context had already confirmed. A real judge miss, caught
+by re-checking the output instead of trusting the score.
+
+Full set of 16, generated replies, and full per-example reasoning: `data/tickets.jsonl`,
+`data/tickets_with_replies.jsonl`, `report.md`.
 
 ## Sample output
 
