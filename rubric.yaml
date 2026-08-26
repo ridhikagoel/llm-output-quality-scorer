@@ -1,0 +1,52 @@
+task: >
+  Score an AI-drafted customer support reply, given the original customer message and the
+  account/policy context available to the agent. The scorer judges the DRAFT REPLY, not the
+  customer's message.
+
+dimensions:
+  - name: relevance
+    description: >
+      Does the reply actually address what the customer asked, as opposed to answering an
+      adjacent or generic version of the question?
+    anchors:
+      1: "Reply ignores the customer's actual question; answers something else entirely or is boilerplate."
+      2: "Reply loosely gestures at the topic but misses the specific thing the customer asked."
+      3: "Reply addresses the general topic correctly but misses a nuance or specific detail in the ask."
+      4: "Reply directly addresses the customer's question with only minor imprecision."
+      5: "Reply directly and precisely addresses exactly what the customer asked, with no drift."
+
+  - name: correctness
+    description: >
+      Given the account/policy context provided, is everything the reply states about the
+      account, the policy, or next steps factually accurate? Penalize invented details.
+    anchors:
+      1: "Reply states something that directly contradicts the provided context, or invents a policy/account detail that isn't there."
+      2: "Reply is mostly accurate but includes at least one unsupported or fabricated claim."
+      3: "Reply is accurate on the facts it states but omits a constraint from the context that changes the answer."
+      4: "Reply is fully accurate against the provided context, phrased slightly imprecisely."
+      5: "Reply is fully accurate against the provided context with no unsupported claims."
+
+  - name: completeness
+    description: >
+      If the customer's message has multiple distinct asks (a question plus a complaint, or
+      two separate questions), does the reply address all of them?
+    anchors:
+      1: "Reply addresses none of the distinct parts of a multi-part message, or the single ask in a single-part message is left unanswered."
+      2: "Reply addresses only one part of a clearly multi-part message, ignoring the rest."
+      3: "Reply addresses most parts but drops a minor one (e.g. doesn't acknowledge a stated frustration)."
+      4: "Reply addresses all parts of the message, with one covered more thinly than the others."
+      5: "Reply addresses every distinct part of the message with roughly proportionate attention."
+
+  - name: tone
+    description: >
+      Is the tone professional, appropriately empathetic to the customer's stated sentiment,
+      and free of robotic or overly scripted phrasing?
+    anchors:
+      1: "Tone is dismissive, robotic, or mismatched to the customer's sentiment (e.g. cheerful reply to an angry complaint)."
+      2: "Tone is generically polite but ignores clear customer sentiment (frustration, urgency) that should have been acknowledged."
+      3: "Tone is acceptable and professional but reads as templated/impersonal."
+      4: "Tone is professional and appropriately empathetic, with minor stiffness."
+      5: "Tone is professional, genuinely empathetic where warranted, and reads like a careful human wrote it."
+
+judge_model: llama3.2
+

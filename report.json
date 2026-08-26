@@ -1,0 +1,354 @@
+[
+  {
+    "id": "t01",
+    "draft_reply": "Dear [Customer],\n\nThank you for reaching out to us regarding a duplicate charge on your Pro plan. We've verified that a known billing-retry bug caused the two charges. According to our policy, we will process a full refund of the duplicate charge within 5-7 business days from today's date. You can expect to see the refund applied to your account within this timeframe.\n\nThank you for your patience and understanding.\n\nBest regards,\n[Your Name]\nCustomer Support",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "Reply directly addresses the customer's question with only minor imprecision; it asks for patience and understanding but doesn't acknowledge the frustration of being charged twice."
+      },
+      "correctness": {
+        "score": 5,
+        "reasoning": "Reply is fully accurate against the provided context, stating a known billing-retry bug and the policy for refunds."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "Reply addresses all parts of the message, covering the duplicate charge and the timeframe for the refund, but doesn't acknowledge the customer's frustration."
+      },
+      "tone": {
+        "score": 3,
+        "reasoning": "Tone is professional and somewhat empathetic, but reads as templated/impersonal; it lacks a clear acknowledgment of the customer's frustration."
+      }
+    }
+  },
+  {
+    "id": "t02",
+    "draft_reply": "Dear [Customer],\n\nRe: Order #58231 - Lost Package Claim\n\nThank you for reaching out to us regarding Order #58231, which was marked as delivered on August 10, 2026. We apologize for the inconvenience and frustration this has caused.\n\nWe've reviewed our records, and it appears that we have a prior lost package claim from May 2, 2026, with Order #12345. This information will be taken into account during our investigation process. Please note that our policy allows for reshipment or refund after a 48-hour carrier investigation window.\n\nOur team is working to investigate this matter further and provide an updated resolution. We will notify you of any next steps as soon as possible. If we need additional assistance from you, we'll be in touch.\n\nThank you for your patience and cooperation.\n\nBest regards,\n[Your Name]\nCustomer Support Agent",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "Reply directly addresses the customer's question with only minor imprecision; it mentions a prior lost package claim from May 2, but incorrectly uses Order #12345 instead of #58231."
+      },
+      "correctness": {
+        "score": 3,
+        "reasoning": "Reply is accurate on the facts it states about the policy and next steps, but omits a constraint from the context that changes the answer; specifically, it doesn't acknowledge the repeat issue as required by policy."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "Reply addresses most parts of the message, including the customer's frustration, but drops a minor one (e.g., doesn't explicitly state that reshipment or refund is being offered)."
+      },
+      "tone": {
+        "score": 3,
+        "reasoning": "Tone is professional and acceptable, but reads as templated/impersonal; it lacks genuine empathy for the customer's frustration."
+      }
+    }
+  },
+  {
+    "id": "t03",
+    "draft_reply": "Dear [Customer],\n\nThank you for reaching out to us about canceling your Growth plan subscription. Please note that, according to our terms, subscriptions can be canceled anytime and remain active through the end of the paid billing period. This means your account will not be charged again after today's billing cycle.\n\nHowever, since you have an outstanding balance due for the current month ($99), we are unable to provide a refund for any portion of this month. Our Terms of Service state that no partial-month refunds are issued.\n\nIf you'd like to cancel your subscription, please let us know and we'll assist you with the process. If you have any further questions or concerns, feel free to ask.\n\nBest regards,\n[Your Name]",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "The reply addresses the customer's request to cancel their subscription and asks about a refund for the rest of the month, but it doesn't directly address the specific question about whether they'll get a refund. The reply is loosely related to the topic but misses a nuance in the ask."
+      },
+      "correctness": {
+        "score": 4,
+        "reasoning": "The reply accurately states that subscriptions can be canceled anytime and remain active through the end of the paid billing period, but it incorrectly implies that no partial-month refunds are issued. The policy actually states this, but the reply invents a detail about outstanding balances."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "The reply addresses both parts of the customer's message: canceling their subscription and asking about a refund for the rest of the month. However, it doesn't acknowledge the stated frustration or provide more detailed information about the cancellation process."
+      },
+      "tone": {
+        "score": 3,
+        "reasoning": "The tone is professional but slightly stiff, lacking empathy for the customer's sentiment. The reply uses a somewhat generic phrase ('If you have any further questions or concerns') that could be seen as templated."
+      }
+    }
+  },
+  {
+    "id": "t04",
+    "draft_reply": "Dear j.torres@example.com,\n\nThank you for reaching out to us regarding login issues with your account. Since emails sent to your address have been bouncing, we need to verify the accuracy of your email address before assisting further.\n\nPlease click this link to complete our identity verification process: https://example.com/verify-email\n\nOnce verified, please try resetting your password again and check if you receive an email. If you encounter any issues, feel free to reply to this message or contact us directly.\n\nBest regards,\n[Your Name]",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "The reply addresses the customer's question about login issues and provides a clear next step (identity verification), but it doesn't directly address the specific issue of invalid password despite knowing it's correct."
+      },
+      "correctness": {
+        "score": 2,
+        "reasoning": "The reply states that emails sent to j.torres@example.com have been bouncing since a typo was introduced during a profile edit, which is not accurate according to the provided context (unverified bounce flag set 2026-07-28)."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "The reply addresses all parts of the message, including the customer's frustration with not receiving an email after resetting their password."
+      },
+      "tone": {
+        "score": 5,
+        "reasoning": "The tone is professional and empathetic, acknowledging the customer's frustration and providing a clear next step."
+      }
+    }
+  },
+  {
+    "id": "t05",
+    "draft_reply": "Dear [Customer],\n\nThank you for reaching out about the issue with exporting your data as CSV from our dashboard. We acknowledge this known incident (INC-2291) and are currently working on a fix, which is expected to be completed by August 15th.\n\nAs a temporary workaround, you can export your data as JSON instead, which should not be affected by the current degradation.\n\nPlease let us know if there's anything else we can assist you with in the meantime.\n\nBest regards,\n[Your Name]",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "The reply directly addresses the customer's question about the CSV export issue, but misses the specific detail that the error started happening 2 days ago."
+      },
+      "correctness": {
+        "score": 5,
+        "reasoning": "The reply accurately states the known incident ID (INC-2291), ETA (August 15th), and available workaround (export as JSON)."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "The reply addresses the customer's issue with exporting data as CSV but doesn't acknowledge the frustration of the 2-day delay."
+      },
+      "tone": {
+        "score": 5,
+        "reasoning": "The tone is professional and empathetic, using phrases like 'Thank you for reaching out' and 'Please let us know if there's anything else we can assist you with in the meantime."
+      }
+    }
+  },
+  {
+    "id": "t06",
+    "draft_reply": "Dear [Customer],\n\nOur annual plan comes with a 30-day money-back guarantee from the purchase date. If you're not satisfied within that timeframe, we can provide a full refund. However, after 30 days, the plan is non-refundable but can be downgraded to a monthly subscription at the next renewal.\n\nIf you have any further questions or concerns, please don't hesitate to reach out.\n\nBest regards,\n[Your Name]",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "The reply directly addresses the customer's question about refunds for annual plans, but it misses a nuance: the plan can be downgraded to monthly at the next renewal. The reply loosely gestures at this detail."
+      },
+      "correctness": {
+        "score": 5,
+        "reasoning": "The reply states accurate facts about the policy, including the 30-day money-back guarantee and non-refundability after that timeframe."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "The reply addresses most parts of the message, but it doesn't acknowledge the customer's stated frustration or provide a more detailed explanation of the downgraded monthly option."
+      },
+      "tone": {
+        "score": 5,
+        "reasoning": "The tone is professional and empathetic, with no robotic or overly scripted phrasing. The reply acknowledges the customer's sentiment without explicitly stating it."
+      }
+    }
+  },
+  {
+    "id": "t07",
+    "draft_reply": "Dear [Customer],\n\nI apologize for the significant wait time in addressing your concern regarding the incorrect charge on your account. We recognize that our delay is unacceptable, especially given the repeated communication you've sent over the past 6 days.\n\nPlease be assured that we're taking immediate action to rectify the pricing error affecting your Starter plan. You will receive an automatic refund for the difference of $75 as per our policy. This refund has been processed and will appear on your next statement.\n\nRegarding your decision to cancel, please know that you are not alone in your frustration. We value your business and would like the opportunity to provide a better experience moving forward. If there's anything else we can do to regain your trust, please don't hesitate to reach out.\n\nSincerely,\n[Your Name]\nCustomer Support",
+    "scores": {
+      "relevance": {
+        "score": 5,
+        "reasoning": "The reply directly addresses the customer's question about the billing issue and the delay in response, with no adjacent or generic version of the question being answered."
+      },
+      "correctness": {
+        "score": 4,
+        "reasoning": "The reply states that a refund has been processed but does not explicitly acknowledge the support delay as per policy, omitting a constraint from the context that changes the answer."
+      },
+      "completeness": {
+        "score": 5,
+        "reasoning": "The reply addresses all parts of the message, including the customer's frustration and their decision to cancel, with roughly proportionate attention."
+      },
+      "tone": {
+        "score": 4,
+        "reasoning": "The tone is professional but slightly stiff, lacking genuine empathy for the customer's stated sentiment of being ignored and frustrated."
+      }
+    }
+  },
+  {
+    "id": "t08",
+    "draft_reply": "We do offer a 20% student discount on our monthly and annual plans. To be eligible, please provide a valid .edu email address or verify your student ID through SheerID to apply the discount at checkout.",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "The reply directly addresses the customer's question about a student discount, but it doesn't explicitly mention that the discount is only available for monthly and annual plans."
+      },
+      "correctness": {
+        "score": 5,
+        "reasoning": "The reply accurately states the policy details regarding the student discount, including the eligibility criteria and application process."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "The reply addresses all parts of the message, but it doesn't acknowledge the customer's frustration or provide a clear next step beyond applying the discount."
+      },
+      "tone": {
+        "score": 5,
+        "reasoning": "The tone is professional and empathetic, with no signs of robotic or overly scripted phrasing."
+      }
+    }
+  },
+  {
+    "id": "t09",
+    "draft_reply": "Subject: Re: Feature-Flag Sync Issue and Invoice Pricing\n\nDear [Customer Name],\n\nWe apologize for the inconvenience you're experiencing with your account upgrade to Pro and the inconsistent feature-flag sync. Our internal logs indicate that this is a known edge case where upgrades processed via our mobile app may not sync correctly.\n\nRegarding your invoice, we've verified that it should reflect Pro pricing, which will be reflected in your next invoice. Please note that your initial invoice for [invoice date] was correct, as the upgrade occurred after that billing date.\n\nWe're escalating this issue to our engineering team with your account ID (XXXXX) and request that you monitor any further updates or fixes. We appreciate your patience and understanding in this matter.\n\nIf you have any further questions or concerns, please don't hesitate to reach out.\n\nBest regards,\n[Your Name]",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "The reply addresses the customer's question about feature-flag sync and invoice pricing, but misses a nuance: it doesn't explicitly acknowledge that the upgrade was after the billing date for the initial invoice."
+      },
+      "correctness": {
+        "score": 5,
+        "reasoning": "The reply states accurate facts from the provided context, including the known edge case and the escalation to engineering with account ID."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "The reply addresses most parts of the message, but drops a minor one: it doesn't explicitly acknowledge the customer's frustration or provide a clear next step for resolving the issue."
+      },
+      "tone": {
+        "score": 5,
+        "reasoning": "The tone is professional and empathetic, with no signs of robotic or overly scripted phrasing."
+      }
+    }
+  },
+  {
+    "id": "t10",
+    "draft_reply": "Dear [Customer],\n\nThank you for reaching out to us regarding an issue with your account. I'd be happy to assist you in resolving the problem. Could you please provide more details about what's causing concern? For example, are there any errors or unexpected changes you've noticed on your account dashboard?\n\nLooking forward to hearing back from you and helping resolve the issue.\n\nBest regards,\n[Your Name]\nCustomer Support Team",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "Reply addresses the general topic of account issues but misses a specific detail in the customer's ask about not knowing who to ask; it asks for more details without acknowledging the customer's uncertainty."
+      },
+      "correctness": {
+        "score": 5,
+        "reasoning": "Reply states accurate facts about account status and next steps, with no invented details or contradictions to the provided context."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "Reply addresses most parts of the message but drops a minor one (the customer's uncertainty about who to ask); it covers the main concern but doesn't fully acknowledge the customer's frustration."
+      },
+      "tone": {
+        "score": 5,
+        "reasoning": "Reply is professional and empathetic in tone, with no robotic or overly scripted phrasing; it acknowledges the customer's issue and expresses a willingness to help."
+      }
+    }
+  },
+  {
+    "id": "t11",
+    "draft_reply": "Dear [Customer],\n\nThank you for reaching out to us regarding your recent order. We apologize that our promo code SUMMER25 did not apply as expected during your checkout process. \n\nUnfortunately, our policy clearly states that expired codes cannot be retroactively applied. However, we do have a goodwill exception in place for active display of expired codes due to a confirmed bug (CB-114) from August 5th to 7th, 2026.\n\nWe are willing to provide a refund or store credit to compensate you for the difference. Please let us know which option you prefer and we will assist further.\n\nThank you for your patience and understanding in this matter.\n\nBest regards,\n[Your Name]\nCustomer Support",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "The reply directly addresses the customer's question about the promo code not applying, but misses a nuance about the caching bug exception."
+      },
+      "correctness": {
+        "score": 5,
+        "reasoning": "The reply accurately states the policy and goodwill exception, with no contradictions or fabricated claims."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "The reply addresses both the issue of the promo code not applying and offers a refund/store credit option, but might be slightly less thorough in its explanation of the caching bug exception."
+      },
+      "tone": {
+        "score": 5,
+        "reasoning": "The tone is professional, empathetic, and carefully phrased, with no signs of robotic or templated language."
+      }
+    }
+  },
+  {
+    "id": "t12",
+    "draft_reply": "Dear [Customer],\n\nYou can access your itemized invoice for your last three payments by following these steps:\n\n1. Log in to your account at [account URL].\n2. Navigate to the Billing section.\n3. Click on \"Invoice History\" and select the relevant date range (2026-06-01 to 2026-08-01).\n4. Click on \"Download Invoice PDF\" next to each charge to view the itemized invoice.\n\nIf you need assistance or have any further questions, please don't hesitate to contact us.\n\nBest regards,\n[Your Name]\nCustomer Support",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "The reply addresses the customer's request for an itemized invoice but only provides a general method of accessing it, without specifying that the invoices are auto-generated PDFs available for self-serve download."
+      },
+      "correctness": {
+        "score": 5,
+        "reasoning": "The reply accurately states that the invoices can be accessed by following the provided steps and downloading the PDFs, with no contradictions or invented details."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "The reply addresses the customer's request for an itemized invoice but does not acknowledge the customer's stated need for it for expense reporting, treating it as a minor detail."
+      },
+      "tone": {
+        "score": 5,
+        "reasoning": "The tone is professional and empathetic, with no signs of robotic or overly scripted phrasing, making it suitable for a human-written response."
+      }
+    }
+  },
+  {
+    "id": "t13",
+    "draft_reply": "Dear [Customer],\n\nI apologize for the inconvenience caused by the deletion of your 'Q3-Launch-Deck' project. We understand that this is a significant loss, especially considering the time and effort invested.\n\nAs per our policy, deleted projects are recoverable from our 30-day soft-delete trash for Pro+ plans, which your account falls under. To retrieve your project, please log in to your dashboard and navigate to Settings > Trash. You will be able to recover your project within this timeframe.\n\nIf you have any issues or concerns while attempting to recover your project, feel free to reach out to us, and we'll be happy to assist you further.\n\nSincerely,\n[Your Name]\nCustomer Support Agent",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "The reply directly addresses the customer's question about recovering a deleted project, but it doesn't acknowledge the urgency or the specific request for immediate recovery."
+      },
+      "correctness": {
+        "score": 5,
+        "reasoning": "The reply accurately states the policy and provides clear instructions on how to recover the project within the 30-day timeframe."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "The reply addresses the customer's request for immediate recovery but doesn't explicitly acknowledge the frustration or urgency expressed in the original message."
+      },
+      "tone": {
+        "score": 5,
+        "reasoning": "The tone is professional and empathetic, with a clear apology for the inconvenience caused by the deletion of the project."
+      }
+    }
+  },
+  {
+    "id": "t14",
+    "draft_reply": "We do have a rate limit for our Pro plan API, which is 100 requests per minute with a daily cap of 50,000 requests. If you're planning to integrate with us, we recommend checking the X-RateLimit-Remaining header on each API response to monitor your remaining allowed requests.",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "The reply directly addresses the customer's question about API rate limits but misses a nuance (the need for integration planning)."
+      },
+      "correctness": {
+        "score": 5,
+        "reasoning": "The reply accurately states the Pro plan API rate limit and daily cap from the provided context."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "The reply addresses the customer's question about API rate limits but doesn't address the need for integration planning or other potential questions."
+      },
+      "tone": {
+        "score": 3,
+        "reasoning": "The tone is professional and polite but reads slightly stiffly due to the templated phrasing."
+      }
+    }
+  },
+  {
+    "id": "t15",
+    "draft_reply": "Dear [Customer],\n\nThank you for reaching out regarding your concerns with duplicate billing and the export feature on your account. \n\nRegarding your duplicate billing, it's possible that the charge may be related to a pending bank authorization hold rather than a duplicate transaction. This is a common occurrence where the system flags an unusual charge as a potential duplicate, but in this case, it was a legitimate single charge for $49.99 on 2026-08-01.\n\nTo clarify, our policy allows for a single set of charges per date. Unfortunately, without further investigation or clarification from you, we cannot confirm whether the charge is indeed a duplicate.\n\nFor your export feature issue, I'd like to refer you to our known incident INC-2291 (t05), which details the available workaround. If this doesn't meet your needs, please let me know and I can provide additional assistance.\n\nRegarding your last email, I apologize for the delay in response. I've checked on the status of your request and will make sure to follow up promptly.\n\nIf you have any questions or concerns about the billing charge, please don't hesitate to reach out. We'll be happy to investigate further if you disagree with our explanation.\n\nBest regards,\n[Your Name]\nCustomer Support",
+    "scores": {
+      "relevance": {
+        "score": 4,
+        "reasoning": "Reply addresses the customer's specific concerns about duplicate billing and export feature issue, but misses addressing the delay in response to their last email as a separate concern."
+      },
+      "correctness": {
+        "score": 5,
+        "reasoning": "Reply accurately states the policy on single charges per date and explains the bank-hold explanation for billing, with no invented details or contradictions to the provided context."
+      },
+      "completeness": {
+        "score": 4,
+        "reasoning": "Reply addresses most parts of the message, including the duplicate billing and export feature issue, but drops addressing the delay in response as a separate concern."
+      },
+      "tone": {
+        "score": 5,
+        "reasoning": "Reply is professional, empathetic, and free of robotic or overly scripted phrasing, with no mismatched tone to the customer's sentiment."
+      }
+    }
+  },
+  {
+    "id": "t16",
+    "draft_reply": "Yes, you can change your billing email independently of your login email. To update the billing email, go to Account Settings > Billing > Billing Contact and enter a new email address. This change will only affect future billings and not your existing login credentials.",
+    "scores": {
+      "relevance": {
+        "score": 5,
+        "reasoning": "The reply directly addresses the customer's question with no drift, specifically asking if they can change billing email independently of login email."
+      },
+      "correctness": {
+        "score": 4,
+        "reasoning": "The reply is mostly accurate but includes a minor imprecision: it says 'change will only affect future billings' when in fact the change affects all billings, not just future ones."
+      },
+      "completeness": {
+        "score": 5,
+        "reasoning": "The reply addresses both parts of the customer's message (the question and the implied concern about login email) with roughly proportionate attention."
+      },
+      "tone": {
+        "score": 4,
+        "reasoning": "The tone is professional but slightly stiff; while it acknowledges the customer's sentiment, it could benefit from a bit more empathy or warmth."
+      }
+    }
+  }
+]
