@@ -11,11 +11,52 @@ scoring). The human calibration step is set up but not yet completed; see "Calib
 See [CLAUDE.md](./CLAUDE.md) for full scope and requirements. Part of a broader portfolio
 initiative; see the parent [CLAUDE.md](../CLAUDE.md).
 
-**What this demonstrates:** the rubric was written and anchored before any scoring happened.
-The judge's output was checked critically rather than trusted on the first run, which surfaced a
-real weakness (see Tradeoffs below). The calibration step is honest about its own limits: a
-check against a second model is clearly labeled as not a substitute for real human calibration,
-rather than being dressed up as one.
+## Overview
+
+This project turns "is this AI output good enough to ship" from a vibe check into a measurement:
+a rubric based scorer with human calibration, for AI drafted customer support replies.
+
+**The problem it solves.** Every team shipping an AI feature eventually asks "is the output good
+enough?" and usually answers it by eyeballing a few examples. That doesn't scale, isn't
+consistent across people, and isn't defensible in a launch review. This is the artifact a PM
+would actually hand to engineering and design to make that measurable.
+
+**How it works, step by step.**
+
+1. We wrote the rubric first, before any code: 4 dimensions (relevance, correctness,
+   completeness, tone), each scored 1 to 5, and for each score we wrote out what a 2 looks like
+   versus a 4. That anchoring matters: without it, an LLM judge gives inconsistent scores for the
+   same quality of output.
+2. We built a test dataset: 16 realistic customer support tickets, written by hand, spanning easy
+   cases, ambiguous ones, angry customers, and multi part complaints, deliberately varied so
+   there would be real quality variance to measure.
+3. We generated draft replies using a deliberately lightweight, minimally prompted AI agent,
+   standing in for a "first version" draft reply feature a team might actually be evaluating
+   before shipping.
+4. We built the judge: an LLM scores each draft against the rubric, one call per example,
+   returning a score plus a written reason for each dimension.
+5. We ran it for real and looked at the results critically instead of just accepting them. That's
+   where we found something interesting: two of the four dimensions, relevance and completeness,
+   never scored below a 4 across all 16 examples, even on a ticket that was intentionally vague.
+   That's a real weakness in the judge, and we wrote it up rather than hiding it.
+6. We built calibration tooling, because a rubric score means nothing until it is checked against
+   real human judgment. It computes agreement rate, mean error, and correlation, and specifically
+   surfaces any case where the model and the human disagreed by 2 or more points.
+7. We ran a stand in check ourselves and caught a real miss: on one ticket, the judge gave a
+   reply a perfect correctness score, but the reply had actually hedged on a fact ("we cannot
+   confirm if this was a duplicate charge") that the source data had already confirmed. We
+   caught that; the judge didn't.
+
+**The judgment calls worth knowing about.**
+
+We originally planned to use OpenAI's API. We hit a real billing wall mid build: no credits.
+Rather than fake it, we rearchitected the whole thing to run on a free local model (Ollama),
+which turned out to be a better story: it proves the tool is reproducible by anyone without a
+paid key, at the honest cost of weaker judge quality, which we then measured and disclosed.
+
+We explicitly did not let our own labels count as "real calibration." We kept them in a
+separate, clearly named file, because one LLM checking another isn't the same as checking
+against genuine human judgment, and we say that plainly rather than implying otherwise.
 
 ## Setup
 
