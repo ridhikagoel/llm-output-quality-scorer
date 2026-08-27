@@ -162,33 +162,43 @@ whatever the first generation produced.
 
 ## Calibration
 
-**Real human calibration is not done yet.** `data/human_labels.jsonl` (the file the CLAUDE.md
-definition of done actually asks for) is still empty; see `labeling_worksheet.md` to fill it in.
-The point of calibration is checking the judge against a real person's judgment, not another
-model's, so this step can't be satisfied synthetically, and the corresponding checkbox in
-[CLAUDE.md](./CLAUDE.md) stays unchecked until it's done.
+**Real human calibration is done.** All 16 examples were scored independently by a real person
+using `labeling_worksheet.md`, saved to `data/human_labels.jsonl`, and compared to the judge's
+scores with `scorer.cli calibrate`. This is the check the CLAUDE.md definition of done actually
+asks for, and the corresponding checkbox is now satisfied.
 
-**What *is* in this repo (`claude_self_check_report.md`, `data/claude_labels.jsonl`) is a
-different, weaker thing: Claude independently reread all 16 (ticket, context, draft reply)
-triples, without looking at the judge's scores first, and produced its own scores. That's one
-LLM checking another, not calibration against human judgment, and it's kept in separately named
-files specifically so it never gets mistaken for the real thing.**
-
-Results of that check:
+Results:
 
 | dimension | exact match | within ±1 | MAE | Pearson r |
 |---|---|---|---|---|
-| relevance | 0.31 | 1.00 | 0.69 | 0.23 |
-| correctness | 0.50 | 0.94 | 0.56 | 0.62 |
-| completeness | 0.38 | 1.00 | 0.62 | 0.18 |
-| tone | 0.31 | 0.94 | 0.75 | 0.29 |
+| relevance | 0.62 | 1.00 | 0.38 | 0.24 |
+| correctness | 0.19 | 0.69 | 1.12 | 0.00 |
+| completeness | 0.38 | 0.75 | 0.88 | 0.06 |
+| tone | 0.06 | 0.25 | 1.94 | 0.52 (negative) |
 
-Every score was within 1 point on relevance and completeness (weak correlation, but no wild
-misses), while correctness had the strongest correlation (r=0.62), consistent with correctness
-being the most fact checkable dimension against the provided context. The one real disagreement
-(2 or more points) was **`t15`**, a reply juggling three complaints at once: the independent
-check caught that the reply hedges on the billing question ("we cannot confirm whether the
-charge is indeed a duplicate") when the context already **confirms no duplicate was found**. The
-judge scored that reply correctness=5 and missed the hedge; the independent check scored it 3.
-That's exactly the kind of miss real human calibration exists to catch, and it's a plausible
-preview of what a real human labeler might also flag, but it isn't a substitute for one.
+This is a meaningfully worse result than the earlier AI only self check suggested, and that gap
+is itself the finding. Relevance holds up reasonably well. Correctness, completeness, and
+especially tone do not: the human labeler was consistently harsher, particularly on tone, where
+the correlation is actually negative, meaning the judge and the human didn't just disagree on
+degree, they moved in opposite directions.
+
+The pattern in the disagreements is consistent, not random: on nearly every tone disagreement,
+the judge called a reply "professional and empathetic" while the human labeler scored it a 2 or
+3, reading the same reply as templated or impersonal. `t05`, `t12`, `t13`, and `t15` all show
+this exact gap: the judge's tone reasoning leans on surface signals ("uses phrases like thank you
+for reaching out") without weighing whether the reply actually engages with what the customer is
+feeling. That's a real, specific failure mode this calibration step exists to catch, and an
+AI only self check did not surface it nearly this clearly (the earlier self check showed weak
+positive correlation on tone, not a negative one). Correctness told a similar story: on several
+tickets (`t05`, `t10`, `t12`, `t13`) the judge scored a reply as fully accurate while the human
+labeler scored it lower for omitting or softening a relevant detail the policy called for, not
+for stating anything false outright, a distinction the anchored rubric's correctness scale
+doesn't currently separate out.
+
+**Bottom line for anyone deciding whether to trust this judge as is:** don't, without changes.
+Relevance is usable. Tone and correctness need either a stronger judge model, a revised rubric
+that separates "factually wrong" from "technically accurate but incomplete," or both, before
+this scorer's output should drive a real ship or no ship decision.
+
+The earlier AI only self check (`claude_self_check_report.md`, `data/claude_labels.jsonl`) is
+kept in the repo for comparison, clearly labeled as the weaker, non human check it always was.
