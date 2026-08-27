@@ -29,7 +29,7 @@ Best regards,
 [Your Name]
 Customer Support
 
-Your scores: relevance=5, correctness=5, completeness=5, tone=5
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -58,7 +58,7 @@ Best regards,
 [Your Name]
 Customer Support Agent
 
-Your scores: relevance=5, correctness=5, completeness=4, tone=5
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -82,7 +82,7 @@ If you'd like to cancel your subscription, please let us know and we'll assist y
 Best regards,
 [Your Name]
 
-Your scores: relevance=4, correctness=4, completeness=4, tone=4
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -106,7 +106,7 @@ Once verified, please try resetting your password again and check if you receive
 Best regards,
 [Your Name]
 
-Your scores: relevance=4, correctness=3, completeness=4, tone=3
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -130,7 +130,7 @@ Please let us know if there's anything else we can assist you with in the meanti
 Best regards,
 [Your Name]
 
-Your scores: relevance=4, correctness=3, completeness=2, tone=2
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -152,7 +152,7 @@ If you have any further questions or concerns, please don't hesitate to reach ou
 Best regards,
 [Your Name]
 
-Your scores: relevance=4, correctness=4, completeness=3, tone=3
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -177,7 +177,7 @@ Sincerely,
 [Your Name]
 Customer Support
 
-Your scores: relevance=5, correctness=4, completeness=3, tone=2
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -192,7 +192,7 @@ Your scores: relevance=5, correctness=4, completeness=3, tone=2
 **Draft reply:**
 > We do offer a 20% student discount on our monthly and annual plans. To be eligible, please provide a valid .edu email address or verify your student ID through SheerID to apply the discount at checkout.
 
-Your scores: relevance=4, correctness=4, completeness=3, tone=3
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -220,7 +220,7 @@ If you have any further questions or concerns, please don't hesitate to reach ou
 Best regards,
 [Your Name]
 
-Your scores: relevance=4, correctness=4, completeness=4, tone=4
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -243,7 +243,7 @@ Best regards,
 [Your Name]
 Customer Support Team
 
-Your scores: relevance=4, correctness=3, completeness=2, tone=4
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -270,7 +270,7 @@ Best regards,
 [Your Name]
 Customer Support
 
-Your scores: relevance=4, correctness=4, completeness=4, tone=3
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -298,7 +298,7 @@ Best regards,
 [Your Name]
 Customer Support
 
-Your scores: relevance=4, correctness=3, completeness=3, tone=2
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -323,7 +323,7 @@ Sincerely,
 [Your Name]
 Customer Support Agent
 
-Your scores: relevance=3, correctness=3, completeness=2, tone=2
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -338,7 +338,7 @@ Your scores: relevance=3, correctness=3, completeness=2, tone=2
 **Draft reply:**
 > We do have a rate limit for our Pro plan API, which is 100 requests per minute with a daily cap of 50,000 requests. If you're planning to integrate with us, we recommend checking the X-RateLimit-Remaining header on each API response to monitor your remaining allowed requests.
 
-Your scores: relevance=3, correctness=4, completeness=4, tone=3
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -369,7 +369,7 @@ Best regards,
 [Your Name]
 Customer Support
 
-Your scores: relevance=5, correctness=4, completeness=3, tone=2
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---
 
@@ -384,6 +384,6 @@ Your scores: relevance=5, correctness=4, completeness=3, tone=2
 **Draft reply:**
 > Yes, you can change your billing email independently of your login email. To update the billing email, go to Account Settings > Billing > Billing Contact and enter a new email address. This change will only affect future billings and not your existing login credentials.
 
-Your scores: relevance=4, correctness=3, completeness=4, tone=2
+Your scores: relevance=__, correctness=__, completeness=__, tone=__
 
 ---

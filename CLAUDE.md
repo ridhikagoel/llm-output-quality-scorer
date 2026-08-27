@@ -42,11 +42,11 @@ Change at least one of these from whatever an AI would default to, and document 
   prompt, or accept the disagreement, and why.
 
 ## Definition of done
-- [x] Rubric file + scorer run end-to-end on real LLM outputs
-- [x] README reports calibration results against your hand-labeled set, including disagreements
+- [ ] Rubric file + scorer run end-to-end on real LLM outputs
+- [ ] README reports calibration results against your hand-labeled set, including disagreements
 - [ ] Documents how the rubric would change for a different task/domain
-- [x] README has a `## Tradeoffs` section documenting a real decision you changed and why
-- [x] No API key needed (local Ollama); no secrets committed
+- [ ] README has a `## Tradeoffs` section documenting a real decision you changed and why
+- [ ] `.env.example`; no secrets committed
 
 ## Portfolio pitch
 "Built a quality scorer with an anchored rubric and reported human-calibration results,
