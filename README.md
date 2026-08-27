@@ -47,17 +47,6 @@ would actually hand to engineering and design to make that measurable.
    confirm if this was a duplicate charge") that the source data had already confirmed. We
    caught that; the judge didn't.
 
-**The judgment calls worth knowing about.**
-
-We originally planned to use OpenAI's API. We hit a real billing wall mid build: no credits.
-Rather than fake it, we rearchitected the whole thing to run on a free local model (Ollama),
-which turned out to be a better story: it proves the tool is reproducible by anyone without a
-paid key, at the honest cost of weaker judge quality, which we then measured and disclosed.
-
-We explicitly did not let our own labels count as "real calibration." We kept them in a
-separate, clearly named file, because one LLM checking another isn't the same as checking
-against genuine human judgment, and we say that plainly rather than implying otherwise.
-
 ## Setup
 
 Runs entirely against a local [Ollama](https://ollama.com) model. No API key, no billing, no
